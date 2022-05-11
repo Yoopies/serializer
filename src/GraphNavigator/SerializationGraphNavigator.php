@@ -196,6 +196,7 @@ final class SerializationGraphNavigator extends GraphNavigator
                 if ($this->dispatcher->hasListeners('serializer.pre_serialize', $type['name'], $this->format)) {
                     $this->dispatcher->dispatch('serializer.pre_serialize', $type['name'], $this->format, $event = new PreSerializeEvent($this->context, $data, $type));
                     $type = $event->getType();
+                    $data = $event->getObject();
                 }
 
                 // First, try whether a custom handler exists for the given type. This is done

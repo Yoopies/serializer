@@ -82,11 +82,7 @@ class SerializationContext extends Context
         }
 
         $this->visitingSet->detach($object);
-        $poppedObject = $this->visitingStack->pop();
-
-        if ($object !== $poppedObject) {
-            throw new RuntimeException('Context visitingStack not working well');
-        }
+        $this->visitingStack->pop();
     }
 
     /**
